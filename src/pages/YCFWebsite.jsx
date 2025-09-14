@@ -150,14 +150,14 @@ const YCFWebsite = () => {
         <div className="max-w-7xl mx-auto text-center relative z-10">
 
           
-          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight pt-10">
             <span className="text-navy-blue text-4xl md:text-6xl">
-                <span className="text-navy-blue mb-4">Teaching </span>
+                <span className="text-navy-blue">Teaching </span>
                 <span className="text-orange-500">FINANCIAL </span>
-                <span className="text-teal-600 mb-4">LITERACY</span>
-                 to LAUSD students in
+                <span className="text-teal-600">LITERACY </span>
             </span>
-            <span className="block text-green-600 text-7xl md:text-9xl mt-2 drop-shadow-lg">
+            <div className='text-4xl text-navy-blue pb-6'>to LAUSD students in</div>
+            <span className="block text-green-600 text-7xl md:text-9xl drop-shadow-lg">
               5 WEEKS
             </span>
           </h1>
@@ -511,13 +511,6 @@ const YCFWebsite = () => {
                 </div>
               ))}
             </div>
-            
-            <div className="text-center">
-              <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-100 rounded-full border-2 border-gray-300">
-                <span className="text-gray-600 font-medium">Website designed by</span>
-                <span className="text-teal-600 font-bold">Richard Amador</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -830,9 +823,6 @@ const YCFWebsite = () => {
           <div className="border-t border-gray-700 pt-8 text-center">
             <p className="text-gray-400 mb-2 font-medium">
               &copy; 2024 Youth Capital & Finance. Making financial literacy fun for all! 
-            </p>
-            <p className="text-sm text-gray-500">
-              Website created by <span className="text-teal-400 font-semibold">Richard Amador</span>
             </p>
           </div>
         </div>
