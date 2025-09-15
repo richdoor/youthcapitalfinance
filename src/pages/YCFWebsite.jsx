@@ -98,6 +98,19 @@ const YCFWebsite = () => {
     }
   ];
 
+  const schoolsImpacted = [
+    {
+      img: "", 
+      schoolName: "Paul Revere Charter Middle School", 
+      desc: "Lots of fun learning"
+    },
+    {
+      img: "", 
+      schoolName: "St Thomas Apostle School", 
+      desc: "Upcoming..."
+    }
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100">
       {/* Navigation */}
@@ -320,8 +333,8 @@ const YCFWebsite = () => {
           
           <div className="grid md:grid-cols-3 gap-8 mb-20">
             {[
-              { icon: School, number: "15+", label: "Schools Transformed", color: "bg-blue-500", bgColor: "bg-blue-100" },
-              { icon: Users, number: "500+", label: "Future Millionaires", color: "bg-green-500", bgColor: "bg-green-100" },
+              { icon: School, number: "3", label: "Schools Transformed", color: "bg-blue-500", bgColor: "bg-blue-100" },
+              { icon: Users, number: "250+", label: "Future Millionaires", color: "bg-green-500", bgColor: "bg-green-100" },
               { icon: Star, number: "100%", label: "Fun Guarantee", color: "bg-yellow-500", bgColor: "bg-yellow-100" }
             ].map((stat, index) => (
               <div key={index} className="group text-center">
@@ -340,19 +353,16 @@ const YCFWebsite = () => {
           
           {/* Photo Gallery */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.from({length: 6}).map((_, i) => (
+            {schoolsImpacted.map((stat, i) => (
               <div key={i} className="group relative overflow-hidden rounded-3xl bg-white border-4 border-gray-200 hover:border-teal-500 transition-all duration-300 shadow-lg hover:shadow-2xl">
                 <div className="aspect-video bg-gradient-to-br from-teal-100 to-blue-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <div className="text-center text-gray-600">
-                    <School className="w-12 h-12 mx-auto mb-4 group-hover:text-teal-500 transition-colors" />
-                    <div className="font-bold text-lg">Success Story #{i + 1}</div>
-                  </div>
+                  <img src={stat.img} alt="" />
                 </div>
                 <div className="p-6 bg-white">
                   <h3 className="font-black text-navy-blue mb-2 text-xl group-hover:text-teal-600 transition-colors">
-                    Amazing School {i + 1}
+                    {stat.schoolName}
                   </h3>
-                  <p className="text-gray-600 font-medium">Financial literacy champions in action!</p>
+                  <p className="text-gray-600 font-medium">{stat.desc}</p>
                 </div>
               </div>
             ))}
@@ -410,9 +420,14 @@ const YCFWebsite = () => {
                 <h4 className="text-2xl font-black text-navy-blue">Live Calendar</h4>
               </div>
               <div className="space-y-4">
+                {
+                  // red: bg-red-100 text-red-700 border-red-300
+                  // yellow: bg-yellow-100 text-yellow-700 border-yellow-300
+                  // green: bg-green-100 text-green-700 border-green-300
+                }
                 {[
                   { month: "October 2024", status: "BOOKED", color: "bg-red-100 text-red-700 border-red-300" },
-                  { month: "November 2024", status: "LIMITED", color: "bg-yellow-100 text-yellow-700 border-yellow-300" },
+                  { month: "November 2024", status: "OPEN", color: "bg-green-100 text-green-700 border-green-300" },
                   { month: "December 2024", status: "OPEN", color: "bg-green-100 text-green-700 border-green-300" },
                   { month: "January 2025", status: "OPEN", color: "bg-green-100 text-green-700 border-green-300" }
                 ].map((slot, index) => (
@@ -822,7 +837,7 @@ const YCFWebsite = () => {
           
           <div className="border-t border-gray-700 pt-8 text-center">
             <p className="text-gray-400 mb-2 font-medium">
-              &copy; 2024 Youth Capital & Finance. Making financial literacy fun for all! 
+              &copy; 2025 Youth Capital & Finance. Making financial literacy fun for all! 
             </p>
           </div>
         </div>
