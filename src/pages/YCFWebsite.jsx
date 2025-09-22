@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronRight, Mail, Phone, Instagram, Calendar, Users, School, DollarSign, Star, Award, BookOpen, Target, CreditCard, TrendingUp, Gift, ArrowRight, Sparkles, Zap, Brain, Globe, Shield, Leaf, Hand } from 'lucide-react';
+import Ethan from "../assets/team/Ethan.png"; // 430 x 430 pixels on ps
+import Yinny from '../assets/team/Vinny.jpg';
 
 const YCFWebsite = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -110,6 +112,12 @@ const YCFWebsite = () => {
       desc: "Upcoming..."
     }
   ]
+
+  const team = [
+    { name: "Vinny Pendley", role: "Loyola HS Student, Program Leader", color: "none", img: Yinny },
+    { name: "Charlie Vick", role: "Loyola HS Student, Financial Educator", color: "none", img: Yinny },
+    { name: "Ethan Youn", role: "Loyola HS Student, Curriculum Designer", color: "bg-blue-500", img: Ethan }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100">
@@ -506,16 +514,12 @@ const YCFWebsite = () => {
             </h3>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {[
-                { name: "Vinny Pendley", role: "Loyola HS Student, Program Leader", color: "bg-teal-500" },
-                { name: "Charlie Vick", role: "Loyola HS Student, Financial Educator", color: "bg-orange-500" },
-                { name: "Ethan Youn", role: "Loyola HS Student, Curriculum Designer", color: "bg-blue-500" }
-              ].map((founder, index) => (
+              {team.map((founder, index) => (
                 <div key={index} className="group text-center">
                   <div className="relative mb-6">
                     <div className={`w-32 h-32 ${founder.color} rounded-3xl mx-auto flex items-center justify-center group-hover:rotate-12 transition-all duration-500 shadow-2xl`}>
                       <span className="text-4xl font-black text-white">
-                        {founder.name.split(' ').map(n => n[0]).join('')}
+                        <img src={founder.img} alt="" />
                       </span>
                     </div>
                   </div>
