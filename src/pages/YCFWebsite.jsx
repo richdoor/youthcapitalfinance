@@ -2,17 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronRight, Mail, Phone, Instagram, Calendar, Users, School, DollarSign, Star, Award, BookOpen, Target, CreditCard, TrendingUp, Gift, ArrowRight, Sparkles, Zap, Brain, Globe, Shield, Leaf, Hand } from 'lucide-react';
 import Ethan from "../assets/team/Ethan.png"; // 430 x 430 pixels on ps
 import Yinny from '../assets/team/Vinny.jpg';
+import Charlie from "../assets/team/Charlie.JPG";
+import PaulRevere from "../assets/schools/PaulRevere.JPG";
+// photo scroll
+import Photo1 from "../assets/PhotoScroll/Photo1.JPG";
+import Photo2 from "../assets/PhotoScroll/Photo2.JPG";
+import Photo3 from "../assets/PhotoScroll/Photo3.JPG";
+import Photo4 from "../assets/PhotoScroll/Photo4.JPG";
+import Photo5 from "../assets/PhotoScroll/Photo5.JPG";
+import Photo6 from "../assets/PhotoScroll/Photo6.JPG";
+import Photo7 from "../assets/PhotoScroll/Photo7.JPG";
+import Photo8 from "../assets/PhotoScroll/Photo8.JPG";
 
 const YCFWebsite = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [openFaq, setOpenFaq] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [scrollY, setScrollY] = useState(0);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+    }, 5000); // Change photo every 5 seconds
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -28,6 +47,8 @@ const YCFWebsite = () => {
     alert('Thank you for your message! We\'ll get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
   };
+
+  const photos = [Photo1, Photo2, Photo3, Photo4, Photo5, Photo6, Photo7, Photo8];
 
   const faqData = [
     {
@@ -102,7 +123,7 @@ const YCFWebsite = () => {
 
   const schoolsImpacted = [
     {
-      img: "", 
+      img: PaulRevere, 
       schoolName: "Paul Revere Charter Middle School", 
       desc: "Lots of fun learning"
     },
@@ -115,7 +136,7 @@ const YCFWebsite = () => {
 
   const team = [
     { name: "Vinny Pendley", role: "Loyola HS Student, Program Leader", color: "none", img: Yinny },
-    { name: "Charlie Vick", role: "Loyola HS Student, Financial Educator", color: "none", img: Yinny },
+    { name: "Charlie Vick", role: "Loyola HS Student, Financial Educator", color: "none", img: Charlie },
     { name: "Ethan Youn", role: "Loyola HS Student, Curriculum Designer", color: "bg-blue-500", img: Ethan }
   ];
 
@@ -158,7 +179,23 @@ const YCFWebsite = () => {
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-100 via-yellow-50 to-teal-100" />
+        {/* Photo Slideshow Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          {photos.map((photo, index) => (
+            <div
+              key={index}
+              className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+              style={{
+                opacity: index === currentPhotoIndex ? 1 : 0,
+                backgroundImage: `url(${photo})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+          ))}
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-gray-50/70" />
+        </div>
         
         {/* Floating decorative elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
